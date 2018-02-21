@@ -2,6 +2,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <ItemGroup>
     <ProjectReference Include="..\ContatoAPI.Domain\ContatoAPI.Domain.csproj" />
+    <ProjectReference Include="..\ContatoAPI.Tools\ContatoAPI.Tools.Domain.Notifications\ContatoAPI.Tools.Domain.Notifications.csproj" />
     <Content Include="Contatos\Queries\GetContatoDetail\GetContatoDetailQuery.cs" />
     <Content Include="Interfaces\IRepository.cs" />
     <Content Include="Interfaces\IContatoRepository.cs" />

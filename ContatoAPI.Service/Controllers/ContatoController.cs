@@ -6,6 +6,9 @@ using Microsoft.AspNetCore.Mvc;
 using ContatoAPI.Application.Contatos.Queries.GetContatoDetail;
 using ContatoAPI.Application.Contatos.Queries.GetContatoList;
 using Microsoft.AspNetCore.Authorization;
+using ContatoAPI.Application.Contatos.Commands.CreateContato;
+using System.Text;
+using ContatoAPI.Application.Contatos.Commands.UpdateContato;
 
 namespace ContatoAPI.Service.Controllers
 {
@@ -16,12 +19,18 @@ namespace ContatoAPI.Service.Controllers
 
         private readonly IGetContatoListQuery _queryList;
         private readonly IGetContatoDetailQuery _queryDetail;
+        private readonly ICreateContatoCommand _createCommand;
+        private readonly IUpdateContatoCommand _updateCommand;
 
         public ContatoController(IGetContatoListQuery queryList,
-             IGetContatoDetailQuery queryDetail)
+             IGetContatoDetailQuery queryDetail,
+              ICreateContatoCommand createCommand,
+              IUpdateContatoCommand updateCommand)
         {
             _queryList = queryList;
             _queryDetail = queryDetail;
+            _createCommand = createCommand;
+            _updateCommand = updateCommand;
         }
 
         // GET api/values
@@ -52,20 +61,41 @@ namespace ContatoAPI.Service.Controllers
 
         // POST api/values
         [HttpPost]
-        public void Post([FromBody]string value)
+        [Authorize]
+        public async Task<IActionResult> Post([FromBody]CreateContatoModel value)
         {
+            await _createCommand.Execute(value);
+            if (_createCommand.HasNotifications())
+                return BadRequest(_createCommand.GetNotifications());
+            
+            return Created("", "");
         }
 
         // PUT api/values/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody]string value)
+        public async Task<IActionResult> Put(string id, [FromBody]UpdateContatoModel value)
         {
+            value.id = id;
+            await _updateCommand.Execute(value);
+
+            if (_createCommand.HasNotifications())
+            {
+                var notifications = _createCommand.GetNotifications();
+                if (notifications.Any(x => x.key.Equals("id")))
+                    return NotFound(notifications);
+                else
+                    return BadRequest(notifications);
+            }
+
+            return NoContent();
+
         }
 
         // DELETE api/values/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public async Task<IActionResult> Delete(int id)
         {
+            return NoContent();
         }
     }
 }
