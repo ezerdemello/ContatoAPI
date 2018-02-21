@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+  <ItemGroup>
+    <ProjectReference Include="..\ContatoAPI.Domain\ContatoAPI.Domain.csproj" />
+    <Content Include="Contatos\Queries\GetContatoDetail\GetContatoDetailQuery.cs" />
+    <Content Include="Interfaces\IRepository.cs" />
+    <Content Include="Interfaces\IContatoRepository.cs" />
+  </ItemGroup>
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+</Project>
