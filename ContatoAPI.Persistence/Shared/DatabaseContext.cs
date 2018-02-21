@@ -6,6 +6,8 @@ using System.Collections.Generic;
 using System.Text;
 using System.Reflection;
 
+using Microsoft.Extensions.Options;
+
 using MongoDB.Driver;
 
 using MongoDB.Bson;
@@ -20,15 +22,24 @@ namespace ContatoAPI.Persistence.Shared
 
         private readonly IMongoClient _client;
         private readonly IMongoDatabase _database;
+        
+        private readonly Settings _settings;
 
-        public DatabaseContext()
+        public DatabaseContext(IOptions<Settings> settings)
         {
+
+            _settings = settings.Value;
+
             try
             {
                 // "mongodb://localhost:20000"
-                _client = new MongoClient(Environment.GetEnvironmentVariable("MONGO_HOST"));
+                //_client = new MongoClient(Environment.GetEnvironmentVariable("MONGO_HOST"));
                 // "Seguros"
-                _database = _client.GetDatabase(Environment.GetEnvironmentVariable("MONGO_DATABASE"));
+                //_database = _client.GetDatabase(Environment.GetEnvironmentVariable("MONGO_DATABASE"));
+
+                _client = new MongoClient(_settings.ConnectionString);
+                _database = _client.GetDatabase(_settings.Database);
+
             }
             catch (Exception ex)
             {

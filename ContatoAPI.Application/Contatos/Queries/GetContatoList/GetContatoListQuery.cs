@@ -23,6 +23,10 @@ namespace  ContatoAPI.Application.Contatos.Queries.GetContatoList
             GetContatoListItemModel modelItem;
             var filters = new List<Expression<Func<Contato, bool>>>();
             var result = new List<GetContatoListItemModel>();
+
+            if(model.size == 0)
+                model.size = 10;
+
             var query = await _repositorio.GetByFilters(filters, model.page, model.size);
 
             foreach(var item in query)
@@ -39,7 +43,6 @@ namespace  ContatoAPI.Application.Contatos.Queries.GetContatoList
             }
 
             return result;
-            
         }
 
     }

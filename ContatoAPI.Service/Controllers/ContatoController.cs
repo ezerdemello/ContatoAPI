@@ -3,25 +3,51 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using ContatoAPI.Application.Contatos.Queries.GetContatoDetail;
+using ContatoAPI.Application.Contatos.Queries.GetContatoList;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ContatoAPI.Service.Controllers
 {
 
     [Route("api/[controller]")]
-    public class ValuesController : Controller
+    public class ContatoController : Controller
     {
-        // GET api/values
-        [HttpGet]
-        public IEnumerable<string> Get()
+
+        private readonly IGetContatoListQuery _queryList;
+        private readonly IGetContatoDetailQuery _queryDetail;
+
+        public ContatoController(IGetContatoListQuery queryList,
+             IGetContatoDetailQuery queryDetail)
         {
-            return new string[] { "value1", "value2" };
+            _queryList = queryList;
+            _queryDetail = queryDetail;
+        }
+
+        // GET api/values
+        
+        [HttpGet]
+        [Authorize]
+        public async Task<IActionResult> Get(GetContatoListFilter model)
+        {
+            var resultFromQuery = await _queryList.Execute(model);
+            
+            if(resultFromQuery == null)
+                return NotFound("Nenhum conteudo encontrado");
+
+            return Ok(resultFromQuery);
         }
 
         // GET api/values/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        [Authorize]
+        public async Task<IActionResult> Get(string id)
         {
-            return "value";
+            var returnFromQuery = await _queryDetail.Execute(id);
+            if(returnFromQuery == null)
+                return NotFound("Não foi possível encontrar o objeto!");
+
+            return Ok(returnFromQuery);
         }
 
         // POST api/values
