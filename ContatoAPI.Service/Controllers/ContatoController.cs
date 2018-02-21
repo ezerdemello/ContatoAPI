@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Authorization;
 using ContatoAPI.Application.Contatos.Commands.CreateContato;
 using System.Text;
 using ContatoAPI.Application.Contatos.Commands.UpdateContato;
+using ContatoAPI.Application.Contatos.Commands.DeleteContato;
 
 namespace ContatoAPI.Service.Controllers
 {
@@ -21,16 +22,21 @@ namespace ContatoAPI.Service.Controllers
         private readonly IGetContatoDetailQuery _queryDetail;
         private readonly ICreateContatoCommand _createCommand;
         private readonly IUpdateContatoCommand _updateCommand;
+        private readonly IDeleteContatoCommand _deleteCommand;
+
+        
 
         public ContatoController(IGetContatoListQuery queryList,
              IGetContatoDetailQuery queryDetail,
               ICreateContatoCommand createCommand,
-              IUpdateContatoCommand updateCommand)
+              IUpdateContatoCommand updateCommand,
+              IDeleteContatoCommand deleteCommand)
         {
             _queryList = queryList;
             _queryDetail = queryDetail;
             _createCommand = createCommand;
             _updateCommand = updateCommand;
+            _deleteCommand = deleteCommand;
         }
 
         // GET api/values
@@ -73,6 +79,7 @@ namespace ContatoAPI.Service.Controllers
 
         // PUT api/values/5
         [HttpPut("{id}")]
+        [Authorize]
         public async Task<IActionResult> Put(string id, [FromBody]UpdateContatoModel value)
         {
             value.id = id;
@@ -93,9 +100,16 @@ namespace ContatoAPI.Service.Controllers
 
         // DELETE api/values/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> Delete(int id)
+        [Authorize]
+        public async Task<IActionResult> Delete(string id)
         {
+            await _deleteCommand.Execute(id);
+
+            if (_createCommand.HasNotifications())
+                return NotFound();
+            
             return NoContent();
+
         }
     }
 }

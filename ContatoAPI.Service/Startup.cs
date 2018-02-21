@@ -69,8 +69,9 @@ namespace ContatoAPI.Service
             services.AddTransient<ContatoAPI.Application.Contatos.Commands.UpdateContato.Rules.IUpdateContatoRule, ContatoAPI.Application.Contatos.Commands.UpdateContato.Rules.CheckIfValorIsAnEmailRule>();
             services.AddTransient<ContatoAPI.Application.Contatos.Commands.UpdateContato.Rules.IUpdateContatoRule, ContatoAPI.Application.Contatos.Commands.UpdateContato.Rules.CheckIfValorIsAnTelefoneOrCelularRule>();
             services.AddTransient<ContatoAPI.Application.Contatos.Commands.UpdateContato.IUpdateContatoCommand, ContatoAPI.Application.Contatos.Commands.UpdateContato.UpdateContatoCommand>();
-        
-                            
+
+            services.AddTransient< ContatoAPI.Application.Contatos.Commands.DeleteContato.Rules.IDeleteContatoRule, ContatoAPI.Application.Contatos.Commands.DeleteContato.Rules.CheckIfContatoExistRule>();
+            services.AddTransient<ContatoAPI.Application.Contatos.Commands.DeleteContato.IDeleteContatoCommand, ContatoAPI.Application.Contatos.Commands.DeleteContato.DeleteContatoCommand>();
 
         }
 

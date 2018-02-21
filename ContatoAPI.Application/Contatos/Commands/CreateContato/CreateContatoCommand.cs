@@ -33,7 +33,7 @@ namespace ContatoAPI.Application.Contatos.Commands.CreateContato
 
         public async Task Execute(CreateContatoModel model)
         {
-            if (!this.RequerimentoIsValid(model))
+            if (!this.ModelIsValid(model))
                 return;
 
             var contato = _modelFactory.Create(model.nome, model.canal, model.valor, model.obs);
@@ -51,7 +51,7 @@ namespace ContatoAPI.Application.Contatos.Commands.CreateContato
             return this.ContainsNotifications();
         }
 
-        private bool RequerimentoIsValid(CreateContatoModel model)
+        private bool ModelIsValid(CreateContatoModel model)
         {
             try
             {

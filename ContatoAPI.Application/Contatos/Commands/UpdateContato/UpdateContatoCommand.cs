@@ -26,7 +26,7 @@ namespace ContatoAPI.Application.Contatos.Commands.UpdateContato
 
         public async Task Execute(UpdateContatoModel model)
         {
-            if (!this.RequerimentoIsValid(model))
+            if (!this.ModelIsValid(model))
                 return;
 
             var contato = await _repository.Get(model.id);
@@ -36,6 +36,7 @@ namespace ContatoAPI.Application.Contatos.Commands.UpdateContato
             contato.valor = model.valor;
             contato.obs = model.obs;
 
+            await _repository.Update(contato);
 
         }
 
@@ -49,7 +50,7 @@ namespace ContatoAPI.Application.Contatos.Commands.UpdateContato
             return this.ContainsNotifications();
         }
 
-        private bool RequerimentoIsValid(UpdateContatoModel model)
+        private bool ModelIsValid(UpdateContatoModel model)
         {
             try
             {
