@@ -14,7 +14,7 @@ using ContatoAPI.Application.Contatos.Commands.DeleteContato;
 namespace ContatoAPI.Service.Controllers
 {
 
-    [Route("api/[controller]")]
+    [Route("[controller]")]
     public class ContatoController : Controller
     {
 
