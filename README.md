@@ -1,12 +1,12 @@
 # ContatoAPI
 Este é um repositório para estudos...
 
-Este projeto tem como objetivo, apresentar uma API simples, tendo como dominio
+Este projeto tem como objetivo, apresentar uma API simples, tendo como domínio
 o "Contato" e foi desenvolvido em .net core. Trabalhará junto a uma base orientada
 a arquivo, MongoDB. 
 
 Esta base deverá ser criada antes da execução. Venho utilizando docker para me
-auxiliar neste momentos, portanto inicio um container apontando para porta que 
+auxiliar nestes momentos, portanto inicio um container apontando para porta que 
 desejo e pronto!
 
 As informações para criar esta base deverão ser alteradas junto ao arquivo
