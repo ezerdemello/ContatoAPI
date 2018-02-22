@@ -11,7 +11,7 @@ namespace ContatoAPI.Application.Contatos.Commands.UpdateContato.Rules
     {
         public bool IsValid(UpdateContatoModel model, ICommand command)
         {
-            if (string.IsNullOrEmpty(model.canal) || string.IsNullOrEmpty(model.canal))
+            if (string.IsNullOrEmpty(model.canal) || string.IsNullOrEmpty(model.valor))
                 return true;
 
             if (model.canal.Equals("E-mail"))

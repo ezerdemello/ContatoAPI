@@ -15,7 +15,7 @@ namespace ContatoAPI.Application.Contatos.Commands.CreateContato.Rules
             if (string.IsNullOrEmpty(model.canal) || string.IsNullOrEmpty(model.valor))
                 return true;
 
-            if(model.canal.Equals("Telefone") || model.valor.Equals("Celular"))
+            if(model.canal.Equals("Telefone") || model.canal.Equals("Celular"))
             {
                 var regex = @"^(([1-9]{1}[0-9]{1}[9]{1}[0-9]{4}[0-9]{4})|([1-9]{1}[0-9]{1}[1-8]{1}[0-9]{3}[0-9]{4}))$";
                 Match match = Regex.Match(model.valor, regex, RegexOptions.IgnoreCase);

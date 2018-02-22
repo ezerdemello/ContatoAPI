@@ -16,5 +16,10 @@
     <Content Include="Shared\Repository.cs" />
     <Content Include="Shared\Utility.cs" />
     <Content Include="Contatos\ContatoRepository.cs" />
+    <Content Include="Shared\Settings.cs" />
+    <Content Include="obj\ContatoAPI.Persistence.csproj.nuget.cache" />
+    <Content Include="obj\ContatoAPI.Persistence.csproj.nuget.g.props" />
+    <Content Include="obj\ContatoAPI.Persistence.csproj.nuget.g.targets" />
+    <Content Include="obj\project.assets.json" />
   </ItemGroup>
 </Project>

@@ -13,5 +13,10 @@
   <ItemGroup>
     <ProjectReference Include="..\ContatoAPI.Domain\ContatoAPI.Domain.csproj" />
     <Content Include="Common\EntityTests.cs" />
+    <Content Include="obj\ContatoAPI.Domain.Tests.csproj.nuget.cache" />
+    <Content Include="obj\ContatoAPI.Domain.Tests.csproj.nuget.g.props" />
+    <Content Include="obj\ContatoAPI.Domain.Tests.csproj.nuget.g.targets" />
+    <Content Include="obj\project.assets.json" />
+    <Content Include="Contatos\ContatosTest.cs" />
   </ItemGroup>
 </Project>

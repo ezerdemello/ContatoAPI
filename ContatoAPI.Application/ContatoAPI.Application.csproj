@@ -6,6 +6,16 @@
     <Content Include="Contatos\Queries\GetContatoDetail\GetContatoDetailQuery.cs" />
     <Content Include="Interfaces\IRepository.cs" />
     <Content Include="Interfaces\IContatoRepository.cs" />
+    <Content Include="Contatos\Commands\CreateContato\Factory\ContatoFactory.cs" />
+    <Content Include="Contatos\Commands\CreateContato\Factory\IContatoFactory.cs" />
+    <Content Include="obj\ContatoAPI.Application.csproj.nuget.cache" />
+    <Content Include="obj\ContatoAPI.Application.csproj.nuget.g.props" />
+    <Content Include="obj\ContatoAPI.Application.csproj.nuget.g.targets" />
+    <Content Include="obj\project.assets.json" />
+    <Content Include="Contatos\Commands\CreateContato\Rules\CheckIfCanalIsValidRule.cs" />
+    <Content Include="Contatos\Commands\CreateContato\CreateContatoCommand.cs" />
+    <Content Include="Contatos\Commands\CreateContato\Rules\CheckIfValorIsAnEmailRule.cs" />
+    <Content Include="Contatos\Commands\CreateContato\Rules\CheckIfValorIsAnTelefoneOrCelularRule.cs" />
   </ItemGroup>
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>

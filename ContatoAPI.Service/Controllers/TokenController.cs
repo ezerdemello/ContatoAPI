@@ -11,7 +11,7 @@ using Microsoft.IdentityModel.Tokens;
 
 namespace ContatoAPI.Service.Controllers
 {
-    [Route("token")]
+    [Route("/[controller]")]
     public class TokenController : Controller
     {        
 

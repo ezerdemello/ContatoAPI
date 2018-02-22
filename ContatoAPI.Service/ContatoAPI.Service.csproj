@@ -23,5 +23,13 @@
     <ProjectReference Include="..\ContatoAPI.Application\ContatoAPI.Application.csproj" />
     <ProjectReference Include="..\ContatoAPI.Persistence\ContatoAPI.Persistence.csproj" />
     <Content EnableDefaultContentItems="false" Include="appsettings.json" />
+    <Content Include="Program.cs" />
+    <Content Include="Controllers\TokenController.cs" />
+    <Content Include="Util\TokenModel.cs" />
+    <Content Include="obj\ContatoAPI.Service.csproj.nuget.cache" />
+    <Content Include="obj\ContatoAPI.Service.csproj.nuget.g.props" />
+    <Content Include="obj\ContatoAPI.Service.csproj.nuget.g.targets" />
+    <Content Include="obj\project.assets.json" />
+    <Content Include="Util\DBConfiguration.cs" />
   </ItemGroup>
 </Project>

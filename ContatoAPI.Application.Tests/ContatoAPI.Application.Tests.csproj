@@ -5,6 +5,10 @@
     <IsPackable>false</IsPackable>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Remove="Contatos\Commands\CreateContato\CreateCommandTests.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="AutoMoq" Version="2.0.0" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.5.0" />
     <PackageReference Include="MongoDB.Driver" Version="2.5.0" />
     <PackageReference Include="Moq" Version="4.8.1" />
@@ -19,5 +23,17 @@
     <Content Include="Contatos\Queries\GetContatoList\GetContatoListQueryTests.cs" />
     <Content Include="Contatos\Queries\GetContatoList\GetContatoListFilterTest.cs" />
     <Content Include="Contatos\Queries\GetContatoDetail\GetContatoDetailQueryTests.cs" />
+    <Content Include="obj\ContatoAPI.Application.Tests.csproj.nuget.cache" />
+    <Content Include="obj\ContatoAPI.Application.Tests.csproj.nuget.g.props" />
+    <Content Include="obj\ContatoAPI.Application.Tests.csproj.nuget.g.targets" />
+    <Content Include="obj\project.assets.json" />
+    <Content Include="Contatos\Commands\CreateContato\Factory\ContatoFactoryTest.cs" />
+    <Content Include="Contatos\Commands\CreateContato\Factory\ContatoFactory.cs" />
+    <Content Include="Contatos\Commands\CreateContato\Rules\CheckIfCanalIsValidRuleTests.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ContatoAPI.Tools\ContatoAPI.Tools.Domain.Notifications\ContatoAPI.Tools.Domain.Notifications.csproj" />
+    <Content Include="Contatos\Commands\CreateContato\Rules\CheckIfValorIsAnEmailRuleTests.cs" />
+    <Content Include="Contatos\Commands\CreateContato\Rules\CheckIfValorIsAnTelefoneOrCelularRuleTests.cs" />
   </ItemGroup>
 </Project>
